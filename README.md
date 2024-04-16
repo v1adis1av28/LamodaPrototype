@@ -15,7 +15,8 @@
 
 ## Screenshots
 
-![](C:\Users\Karap\OneDrive\Изображения\Снимки экрана\Снимок экрана (20).png)
+![Снимок экрана (20)](https://github.com/v1adis1av28/LamodaPrototype/assets/122610738/a02f2ac5-11b9-4e5a-8541-363ec5a08aa5)
+![Снимок экрана (21)](https://github.com/v1adis1av28/LamodaPrototype/assets/122610738/08578785-4d15-4b92-95f1-c01c81509663)
 
 
 <a href="https://flask.palletsprojects.com/en/2.0.x/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flask/flask-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" height="40px" width="40px" /></a><a href="https://www.python.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" height="40px" width="40px" /></a>
