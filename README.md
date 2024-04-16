@@ -7,12 +7,6 @@
 - [Description](#description)
 - [Screenshots](#screenshots)
 - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
 - [Contacts](#contacts)
 
 ## Description
@@ -21,8 +15,7 @@
 
 ## Screenshots
 
-<img src="<img src="C:\Users\Karap\OneDrive\Изображения\Снимки экрана\Снимок экрана (20).png"/>" />## Built With
-<img src="<img src="C:\Users\Karap\OneDrive\Изображения\Снимки экрана\Снимок экрана (21).png"/>" />## Built With
+
 
 <a href="https://flask.palletsprojects.com/en/2.0.x/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flask/flask-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" height="40px" width="40px" /></a><a href="https://www.python.org/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" height="40px" width="40px" /></a>
 
