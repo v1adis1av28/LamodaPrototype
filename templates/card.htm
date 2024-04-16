@@ -1,0 +1,46 @@
+{% extends "women.htm" %}
+
+{% block content %}
+
+<div class="container-fluid justify-content-evenly mt-5 mb-5">
+    <div class="row gy-4">
+        <div class="col-sm-6 d-flex align-items-center justify-content-center"> <!-- Изменение добавлено здесь -->
+            <div class="image-container image-left">
+                <img src="{{url_for('static',filename = card_item.image)}}" style="max-width: 100%; max-height: 100%;">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h1>Бренд : {{card_item.name}}</h1>
+            <h2>Стоимость : {{card_item.cost}}</h2>
+            <p>Цвет : {{card_item.color}}</p>
+            <h3 class="fw-bold">О товаре</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Артикул : {{card_item.article}}</li>
+                <li class="list-group-item">Состав : {{card_item.structure}}</li>
+                <li class="list-group-item">Страна производитель : {{card_item.origin_country}}</li>
+            </ul>
+            <h3>Размер товара</h3>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">S</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">M</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                <label class="form-check-label" for="inlineRadio3">L</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                <label class="form-check-label" for="inlineRadio3">XL</label>
+            </div>
+            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('add_item_to_cart', item_id=card_item.id) }}" class="btn btn-dark">Добавить в корзину</a>
+            {% endif%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

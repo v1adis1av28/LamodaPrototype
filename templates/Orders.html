@@ -1,0 +1,25 @@
+{% extends "women.htm" %}
+{% block content %}
+    {% for order in orders %}
+    <h2>Заказ №{{ order.id }}</h2>
+    <div class="row gy-4">
+        {% for item in zakazi %}
+            {% if item.id_order == order.id %}
+                <div class="col-sm-3">
+                    <div class="card h-100">
+                        <a href='{{ url_for("card_by_id", id=item.product.id) }}'>
+                            <img src="{{ url_for('static', filename=item.product.image) }}" alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-left fw-bold">{{ item.product_cost }}</h5>
+                            <p class="card-text fw-bold">{{ item.product.name }}</p>
+                            <p class="card-text fst-italic">{{ item.product.color }}</p>
+                            <p class="card-text">Количество: {{ item.product_quantity }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+{% endblock %}

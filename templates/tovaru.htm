@@ -1,0 +1,62 @@
+{% extends "women.htm" %}
+
+{% block content %}
+<div class="container-fluid justify-content-evenly mt-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group list-group-flush">
+                {% for categ in categories %}
+                    {% if is_male == True and categ.categories_name != 'Платья' and categ.categories_name != 'Юбки' %}
+                        {% if categ.sex == True or categ.sex == None %}
+                            <a href="{{url_for('show_category', category_id=categ.id)}}" class="list-group-item list-group-item-action" aria-current="true">{{ categ.categories_name }}</a>
+                        {% endif %}
+                    {% elif is_male == False %}
+                        <a href="{{url_for('show_category', category_id=categ.id)}}" class="list-group-item list-group-item-action" aria-current="true">{{ categ.categories_name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div><!-- Лист группа -->
+        </div>
+        <div class="col-sm-9 scrollable-cards">
+            <div class="row gy-4">
+                {% for prod in product %}
+                {% if is_male == True and prod.sex == 1 %}
+                <div class="col-sm-3">
+                    <div class="card h-100">
+                        <a href='{{url_for("card_by_id", id=prod.id)}}'>
+                            <img src={{url_for("static",filename = prod.image)}} alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-left fw-bold">{{ prod.cost }}</h5>
+                            <p class="card-text fw-bold">{{ prod.name }}</p>
+                            <p class="card-text fst-italic">{{ prod.color }}</p>
+                            <p class="card-text">{{ prod.category.categories_name }}</p>
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('add_item_to_cart', item_id=prod.id) }}" class="btn btn-dark">Добавить в корзину</a>
+                            {% endif%}
+                        </div>
+                    </div>
+                </div>
+                {% elif is_male == False %}
+                <div class="col-sm-3">
+                    <div class="card h-100">
+                        <a href='{{url_for("card_by_id", id=prod.id)}}'>
+                            <img src={{url_for("static",filename = prod.image)}} alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-left fw-bold">{{ prod.cost }}</h5>
+                            <p class="card-text fw-bold">{{ prod.name }}</p>
+                            <p class="card-text fst-italic">{{ prod.color }}</p>
+                            <p class="card-text">{{ prod.category.categories_name }}</p>
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('add_item_to_cart', item_id=prod.id) }}" class="btn btn-dark">Добавить в корзину</a>
+                            {% endif%}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div><!-- Колонка с карточками товаров -->
+        </div><!-- Ряд -->
+    </div><!-- Контейнер -->
+</div>
+{% endblock %}

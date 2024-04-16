@@ -1,0 +1,60 @@
+{% extends "women.htm" %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+
+<div class="container pt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form method="post">
+        <div class="form-group mt-2">
+          <label for="name">Имя пользователя:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Введите имя пользователя"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Введите email"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="password">Пароль:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Введите пароль"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="confirm-password">Подтвердите пароль:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirm-password"
+            name="confirm_password"
+            placeholder="Подтвердите пароль"
+          />
+        </div>
+        <button type="submit" class="btn btn-dark mt-2">
+          Зарегистрироваться
+        </button>
+      </form>
+      <div class="login mt-2">
+        <a href="{{ url_for('login') }}">Вернуться на вход</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

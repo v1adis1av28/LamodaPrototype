@@ -1,0 +1,151 @@
+{% extends "women.htm" %}
+{% block content %}
+    <div class="container-fluid justify-content-evenly mt-5">
+        <div class="row">
+            <div class="col-sm-7">
+                <!-- Колонка с товарами -->
+                <div class="container border-end">
+                    <h1>Корзина</h1>
+                    <div class="row flex-row">
+                                    {% if current_user.is_authenticated %}
+                    {% for buck in bucket %}
+                        <div class="card flex-row h-100 mt-3">
+                            <!-- Изображение продукта -->
+                            <a href='{{ url_for("card_by_id", id=buck.product.id) }}'>
+                                <img src="{{ url_for('static', filename=buck.product.image) }}" class="card-img-left w-25 p-2" alt="..." style="max-width: 100%; max-height: 100%;">
+                            </a>
+                            <!-- Тело карточки -->
+                            <div class="card-body w-75 text-end">
+                                <!-- Название продукта -->
+                                <h5 class="card-title">{{ buck.product.name }}</h5>
+                                <!-- Артикул -->
+                                <p class="card-text">Артикул: {{ buck.product.article }}</p>
+                                <!-- Цвет -->
+                                <p class="card-text">Цвет: {{ buck.product.color }}</p>
+                                <!-- Цена -->
+                                <p class="card-text">Цена: {{ buck.product.cost }}</p>
+                                <!-- Количество -->
+                                <form action="/update_quantity/{{ buck.product.id }}" method="post">
+                                            <div class="input-group mb-3">
+                                                <input type="number" id="quantity_{{ buck.id }}" name="quantity_{{ buck.product.id }}" class="form-control text-center" value="{{ buck.product_quantity }}" min="1">
+                                                <button class="btn btn-outline-danger" type="submit">Обновить</button>
+                                            </div>
+                                        </form>
+                                <!-- Кнопка удалить -->
+                                <form action="/remove_from_bucket/{{ buck.product.id }}" method="post">
+                                    <button type="submit" class="btn btn-danger">Удалить</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+            {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <!-- Форма с информацией о доставке -->
+                <form method="post" class="container-fluid">
+                    <h2>Доставка в г. Волгоград</h2>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" value="Courier" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Курьерская доставка
+                        </label>
+                        <span class="text-end">Доступны все товары</span>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" value="PickUp" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Самовывоз
+                        </label>
+                        <span class="text-end">Доступны все товары</span>
+                    </div>
+                    <!-- Адрес доставки -->
+                    <div class="container-fluid mt-3">
+                        <h2>Адрес доставки</h2>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="address" id="flexRadioDefault11" value="Ленина 5">
+                            <label class="form-check-label" for="flexRadioDefault11">
+                                Ленина 5
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="address" id="flexRadioDefault12" value="Интернациональная 10">
+                            <label class="form-check-label" for="flexRadioDefault12">
+                                Интернациональная 10
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Получатель -->
+                    <div class="container-fluid mt-3">
+                        <h2>Получатель</h2>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="recipient" id="flexRadioDefault9" value="Заберу сам">
+                            <label class="form-check-label" for="flexRadioDefault9">
+                                Заберу сам
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="recipient" id="flexRadioDefault10" value="Заберет посредник">
+                            <label class="form-check-label" for="flexRadioDefault10">
+                                Заберет посредник
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Способ оплаты -->
+                    <div class="container-fluid mt-3">
+                        <h2>Способ оплаты</h2>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="flexRadioDefault4" value="СБП">
+                            <label class="form-check-label" for="flexRadioDefault4">
+                                СБП
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="flexRadioDefault5" value="При получении">
+                            <label class="form-check-label" for="flexRadioDefault5">
+                                При получении
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="flexRadioDefault6" value="Подарочный сертификат">
+                            <label class="form-check-label" for="flexRadioDefault6">
+                                Подарочный сертификат
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <label for="delivery_date">Дата доставки (гггг-мм-дд):</label><br>
+                            <input type="text" id="delivery_date" name="delivery_date"><br>
+                    </div>
+                    <!-- Итог и кнопка оформить заказ -->
+                    <div class="container-fluid mt-3 border-top">
+                        <div class="row">
+                            <div class="col text-start fw-bold">Итого</div>
+                            <div class="col text-end fw-bold">{{total_price}}</div>
+                        </div>
+                    </div>
+                    <div class="container-fluid mt-3">
+                        <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold" style="height: 50px;">Оформить заказ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+function increaseQuantity(itemId) {
+    var input = document.getElementById('quantity_' + itemId);
+    var currentValue = parseInt(input.value);
+    input.value = currentValue + 1;  // Увеличиваем значение на 1
+}
+
+function decreaseQuantity(itemId) {
+    var input = document.getElementById('quantity_' + itemId);
+    var currentValue = parseInt(input.value);
+    if (currentValue > 1) {
+        input.value = currentValue - 1;  // Уменьшаем значение на 1, если оно больше 1
+    }
+}
+</script>
+
+{% endblock %}

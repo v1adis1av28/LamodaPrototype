@@ -1,0 +1,41 @@
+{% extends "women.htm" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+
+<div class="container pt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8"> <!-- Increased column width to 8 -->
+        <form method="post">
+      <div class="form-group">
+          <label for="name">Имя пользователя:</label>
+          <input
+              type="text"
+              class="form-control mt-2"
+              id="name"
+              name="name"
+              placeholder="Введите имя пользователя"
+          />
+      </div>
+      <div class="form-group mt-2">
+          <label for="password">Пароль:</label>
+          <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Введите пароль"
+          />
+      </div>
+      <div class="form-group text-center mt-2">
+          <button type="submit" class="btn btn-dark">Войти</button>
+      </div>
+  </form>
+      <div class="reg">
+    <a href="{{ url_for('register') }}" class="link text-center">Если не зарегистрированы</a>
+</div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
