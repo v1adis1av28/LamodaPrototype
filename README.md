@@ -11,8 +11,7 @@
 
 ## Description
 
-Учебный проект, в рамках дисциплины web-технологий. Представляет собой аналог основанный на интернет-магазине одежды Lamoda. В проекте реализован основной функционал интернет-магазина и возможность авторизации и регистрации пользователей.
-
+An educational project within the framework of the discipline of web technologies. It is an analog based on the online clothing store Lamoda. The functionality of the application is implemented using the Flask framework. The project implements the functionality of ordering, adding products to the cart, registering and authorizing users.
 ## Screenshots
 
 ![Снимок экрана (20)](https://github.com/v1adis1av28/LamodaPrototype/assets/122610738/a02f2ac5-11b9-4e5a-8541-363ec5a08aa5)
