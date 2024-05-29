@@ -64,12 +64,15 @@ def Mpage():
     return render_template("tovaru.htm", page_name="men", categories=categories, product=products, is_male=True)
 
 @app.route("/orders/")
+@login_required
 def Orders():
-    orders = db_session.query(Order).all().filterby(userid=current_user.id).all()
-    zakazi = db_session.query(Zakazi).all()
-    return render_template("Orders.html", page_name="men", orders=orders, zakazi=zakazi, is_male=True)
-
-
+    if current_user.is_authenticated:
+        orders = db_session.query(Order).all()
+        zakazi = db_session.query(Zakazi).all()
+        return render_template("Orders.html", page_name="men", orders=orders, zakazi=zakazi, is_male=True)
+    else:
+        # Handle anonymous users or redirect them to the login page
+        return redirect(url_for('login'))
 @app.route("/bucket/")
 @login_required
 def Bucketpage():
@@ -131,6 +134,10 @@ def Bucketpage_form():
     return redirect(url_for("Wpage"))
 
 
+
+@app.route("/")
+def index(id):
+    return redirect(url_for('Wpage'))
 
 
 
